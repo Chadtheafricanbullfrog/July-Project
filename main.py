@@ -13,7 +13,7 @@ color = (0, 127, 225)
 
 # load image and rect
 sprite_image = pygame.image.load("seal-monk.png")
-sprite_image = pygame.transform.smoothscale(sprite_image, (80,80))
+sprite_image = pygame.transform.smoothscale(sprite_image, (80, 80))
 sprite_rect = sprite_image.get_rect()
 
 sprite_rect.center = (width // 2, height // 2)
