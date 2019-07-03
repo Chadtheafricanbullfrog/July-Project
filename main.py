@@ -1,14 +1,12 @@
 import pygame
 import random
-
-import pygame as pygame
 from pygame.locals import *
 
 pygame.init()
 screen = pygame.display.Info()
 
-#set width and height to screen size
-size = (width,height) = (int(screen.current_w), int(screen.current_h)
+# set width and height to screen size
+size = (width, height) = (int(screen.current_w), int(screen.current_h))
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 color = (0, 127, 225)
@@ -28,17 +26,18 @@ sprite_image = pygame.transform.rotate(sprite_image, 180 - rotation)
 
 def move_sprite():
     global sprite_image
-    #get information from the screen in case of resizing
+    # get information from the screen in case of resizing
     screen_info = pygame.display.Info()
     sprite_rect.move_ip(speed)
-    if sprite_rect < 0 or sprite_rect > screen_info.current_w:
+    if sprite_rect.left < 0 or sprite_rect.right > screen_info.current_w:
         speed[0] *= -1
         sprite_image = pygame.transform.flip(sprite_image, True, False)
-        sprite_rect.move_ip(speed[0],0)
-    if sprite_rect < 0 or sprite_rect.bottom > screen_info.current_h:
+        sprite_rect.move_ip(speed[0], 0)
+    if sprite_rect.top < 0 or sprite_rect.bottom > screen_info.current_h:
         speed[1] *= -1
         sprite_image = pygame.transform.flip(sprite_image, False, True)
         sprite_rect.move_ip(0, speed[1])
+
 
 def main():
     while True:
