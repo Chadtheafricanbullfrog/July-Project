@@ -1,5 +1,6 @@
 import pygame
 import random
+import sys
 from pygame.locals import *
 
 pygame.init()
@@ -18,7 +19,7 @@ sprite_rect = sprite_image.get_rect()
 
 sprite_rect.center = (width // 2, height // 2)
 
-speed = pygame.math.Vector2(0, 10)
+speed = pygame.math.Vector2(0, 1000)
 rotation = random.randint(0, 360)
 speed.rotate_ip(rotation)
 sprite_image = pygame.transform.rotate(sprite_image, 180 - rotation)
@@ -46,6 +47,9 @@ def main():
         screen.fill(color)
         screen.blit(sprite_image, sprite_rect)
         pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                sys.exit()
 
 
 if __name__ == '__main__':
